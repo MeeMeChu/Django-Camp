@@ -25,8 +25,28 @@ def student_add(request):
             sweetify.error(request, 'เกิดข้อผิดพลาด', text='คุณกรอกข้อมูลไม่ครบหรือชื่อซ้ำกัน', persistent='OK!')
     else:
         form = StudentModelForm()
-    context = {'form' : form}
+    context = {'form' : form }
     return render(request, 'app_students/components/student_add.html', context)
+
+def student_edit(request, pk):
+
+    student = StudentInfo.objects.get(id=pk)
+    form = StudentModelForm(instance=student)
+
+    if request.method == "POST":
+        form = StudentModelForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            sweetify.success(request, 'คุณแก้ไขข้อมูลสำเร็จ', text='เราได้บันทึกข้อมูลของคุณแล้ว!', persistent='OK!')
+            return HttpResponseRedirect(reverse('student'))
+        else:
+            sweetify.error(request, 'เกิดข้อผิดพลาด', text='คุณกรอกข้อมูลไม่ครบหรือชื่อซ้ำกัน', persistent='OK!')
+
+    context = {'form' : form }
+    return render(request, 'app_students/components/student_add.html', context)
+
+def student_delete(request):
+    pass
 
 def contact(request):
     return render(request, 'app_students/contact.html')
