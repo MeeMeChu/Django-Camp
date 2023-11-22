@@ -4,6 +4,7 @@ from app_students.models import StudentInfo
 from app_students.forms import StudentModelForm
 from django.urls import reverse
 from sweetify import sweetify
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -45,8 +46,15 @@ def student_edit(request, pk):
     context = {'form' : form }
     return render(request, 'app_students/components/student_add.html', context)
 
-def student_delete(request):
-    pass
+def student_delete(request, pk):
+    student = StudentInfo.objects.get(id=pk)
+    if request.method == "POST":
+        student.delete()
+        messages.success(request, "ลบข้อมูลเรียบร้อย")
+        return HttpResponseRedirect(reverse('student'))
+    context = {'student' : student }
+    return render(request, 'app_students/components/student_delete.html', context)
+
 
 def contact(request):
     return render(request, 'app_students/contact.html')
