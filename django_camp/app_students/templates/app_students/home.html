@@ -5,13 +5,18 @@
 
 {% block content %} 
     <main class="">
-        <div class="container-md">
+        <div class="container-md m-auto">
             <article class="d-flex align-items-center justify-content-between mt-3" width="500px">
                 <div class="text-center text-wrap">
-                    <h3 class="display-4">เว็บไซต์สำหรับจัดการข้อมูลนักศึกษา</h3>
+                    <h3 class="display-5">เว็บไซต์สำหรับจัดการข้อมูลนักศึกษา</h3>
+                    <div class="d-grid gap-2 col-3 mx-auto">
+                        <a class="btn btn-pur shadow text-wrap text-light" role="button" href="{% url 'student' %}" style="background-color: #967ADA;">
+                            <strong>Get started</strong>
+                        </a>
+                    </div>
                 </div>
                 <figure class="figure">
-                    <img src="{% static 'app_students/Student.png'%}" class="figure-img img-fluid rounded">
+                    <img src="{% static 'app_students/student_1.png'%}" class="figure-img img-fluid rounded">
                 </figure>
             </article>
         </div>
@@ -19,10 +24,10 @@
             <div class="container-md">
                 <article class="d-flex align-items-center justify-content-between">
                     <figure class="figure">
-                        <img src="{% static 'app_students/Student.png'%}" class="figure-img img-fluid rounded">
+                        <img src="{% static 'app_students/student_2.png'%}" class="figure-img img-fluid rounded" width="450px">
                     </figure>
                     <div class="text-center text-wrap">
-                        <h3 class="display-4">เว็บไซต์สำหรับจัดการข้อมูลนักศึกษา</h3>
+                        <h3 class="display-5">เว็บไซต์สำหรับจัดการข้อมูลนักศึกษา</h3>
                     </div>
                 </article>
             </div>
@@ -30,10 +35,13 @@
         <div class="container-md">
             <article class="d-flex align-items-center justify-content-between">
                 <div class="text-center text-wrap">
-                    <h3 class="display-4">เว็บไซต์สำหรับจัดการข้อมูลนักศึกษา</h3>
+                    <h3 class="display-5">สามารเพิ่ม ลบ และแก้ไขข้อมูลได้ตลอด</h3>
+                    <p class="lead">
+                        
+                    </p>
                 </div>
                 <figure class="figure">
-                    <img src="{% static 'app_students/Student.png'%}" class="figure-img img-fluid rounded">
+                    <img src="{% static 'app_students/student_1.png'%}" class="figure-img img-fluid rounded">
                 </figure>
             </article>
         </div>
