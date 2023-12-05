@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect 
 from app_students.models import StudentInfo
 from app_students.forms import StudentModelForm
 from django.urls import reverse
@@ -48,12 +48,9 @@ def student_edit(request, pk):
 
 def student_delete(request, pk):
     student = StudentInfo.objects.get(id=pk)
-    if request.method == "POST":
-        student.delete()
-        messages.success(request, "ลบข้อมูลเรียบร้อย")
-        return HttpResponseRedirect(reverse('student'))
-    context = {'student' : student }
-    return render(request, 'app_students/components/student_delete.html', context)
+    student.delete()
+    sweetify.success(request, 'Deleted!', text='เราได้ลบข้อมูลของคุณแล้ว!', persistent='OK!')
+    return HttpResponseRedirect(reverse('student'))
 
 
 def contact(request):
