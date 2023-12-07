@@ -1,0 +1,47 @@
+{% extends 'app_students/base.html' %}
+{% load static %}
+
+{% block title %} Delete {% endblock %}
+
+{% block content %}
+    <div class="container-sm">
+        <div class="align-self-center">
+            <div class="d-flex justify-content-center p-4">
+                <h3 style="margin-bottom: 0px;"><strong>คุณต้องการลบข้อมูลของนักศึกษาคนนี้ใช่หรือไม่?</strong></h3>
+            </div>
+            <div class="d-flex justify-content-center">
+                <table class="table table-light table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ลำดับ</th>
+                            <th scope="col">ชื่อ - นามสกุล</th>
+                            <th scope="col">รหัสนักศึกษา</th>
+                            <th scope="col">วิชาที่ชอบ</th>
+                            <th scope="col">สาขาวิชา</th>
+                            <th scope="col">วันที่กรอกข้อมูล</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{student.id}}</th>
+                            <td>{{student.name}}</td>
+                            <td>{{student.psu_id}}</td>
+                            <td>{{student.favorite_subject.count}}</td>
+                            <td>{{student.division_set.name}}</td>
+                            <td>{{student.date|date:'j F Y G:i'}}</td>
+                        </tr>
+                    </tbody>
+                </table>  
+            </div>
+            <div class="d-flex justify-content-center">
+                <form action="{% url 'student_delete' student.id %}" method="post" class="w-50 pt-2">
+                    {% csrf_token %}
+                    <div class="d-grid gap-2 mb-3">
+                        <button type="submit" class="btn btn-danger" >ลบข้อมูลนักศึกษา</button>
+                        <a class="btn btn-secondary" role="button" href="{% url 'student' %}">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

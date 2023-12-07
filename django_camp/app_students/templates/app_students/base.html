@@ -1,24 +1,36 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'app_students/logo_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'app_students/main.css' %}">
 
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 
-    <title>{% block title %} {% endblock %}</title>
+    <title>{% block title %} {% endblock %} | Django WebSite</title>
 </head>
+
 <body>
     {% include 'app_students/components/navbar.html'%}
 
     {% block content %}
-    
+
     {% endblock %}
+
+    {% include 'app_students/components/footer.html'%}
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {% load sweetify %}
     {% sweetify %}
+
+    {% block js%}
+    {% endblock %}
 </body>
+
 </html>
